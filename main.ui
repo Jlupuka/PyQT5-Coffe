@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>879</width>
+    <width>737</width>
     <height>525</height>
    </rect>
   </property>
@@ -14,6 +14,18 @@
    <string>Окно кофе</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
+   <item row="2" column="0">
+    <widget class="QPushButton" name="EditpushButton">
+     <property name="font">
+      <font>
+       <pointsize>15</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Изменить</string>
+     </property>
+    </widget>
+   </item>
    <item row="0" column="0">
     <widget class="QTableWidget" name="tableWidget">
      <row>
@@ -56,6 +68,18 @@
        <string>Объем упаковки</string>
       </property>
      </column>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QPushButton" name="AddpushButton">
+     <property name="font">
+      <font>
+       <pointsize>15</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Добавить новую информацию</string>
+     </property>
     </widget>
    </item>
   </layout>
