@@ -2,12 +2,14 @@ import sqlite3
 import sys
 
 from PyQt5.QtWidgets import QApplication, QTableWidgetItem, QWidget
-from PyQt5.uic import loadUi
+
+from FormsCode.addEditCoffeeForm import Ui_CreateInformation
+from FormsCode.mainForm import Ui_Coffee
 
 
 class DataBase:
     def __init__(self) -> None:
-        with sqlite3.connect('coffee.sqlite') as conn:
+        with sqlite3.connect('../data/coffee.sqlite') as conn:
             self.cursor = conn
             conn.isolation_level = None
             self.create_database()
@@ -91,14 +93,14 @@ class DataBase:
                                   coffee_id))
 
 
-class CoffeeApp(QWidget):
+class CoffeeApp(QWidget, Ui_Coffee):
     def __init__(self) -> None:
         super().__init__()
-        loadUi('main.ui', self)
+
+        self.setupUi(self)
 
         self.db = DataBase()
         self.add_coffee_window = None
-
         self.initUI()
 
     def initUI(self) -> None:
@@ -143,14 +145,14 @@ class CoffeeApp(QWidget):
         self.add_coffee_window.show()
 
 
-class AddCoffeeInformation(QWidget):
+class AddCoffeeInformation(QWidget, Ui_CreateInformation):
     def __init__(self, db: DataBase) -> None:
         super().__init__()
 
+        self.setupUi(self)
+
         self.db = db
         self.coffee_window = None
-
-        loadUi('addEditCoffeeForm.ui', self)
 
         self.AddPushButton.clicked.connect(self.add_data)
         self.ExitPushButton.clicked.connect(self.exit_btn)
